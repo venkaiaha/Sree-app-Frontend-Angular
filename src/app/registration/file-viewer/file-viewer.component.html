@@ -1,0 +1,19 @@
+<div align="center" width="100%">
+  <!-- <div *ngIf="condition; else elseBlock">Content to render when condition is true.</div>
+                                          <ng-template #elseBlock>Content to render when condition is false.</ng-template> -->
+  <!-- <input autocomplete="off" type="file" multiple (change)="onOpenFile($event)"> -->
+  <!-- <button onclick="view_toggler()" >View</button>   -->
+  <!-- <div  style="width:800px !important; height:800px">
+  <h4>no docs to view</h4>
+</div> -->
+  <div *ngIf="file.length<=0">
+    <p>No documents to view</p>
+  </div>
+
+  <div class="viewer" *ngIf="file.length > 0" style="width:100% !important; height:100%">
+    <h6>{{ d   }}</h6>
+    <app-image-viewer style="width:100% !important; height:100%" (onNext)="onNext($event)"
+      (onPrevious)="onPrevious($event)" [images]='file' [idContainer]="'idOnHTML'" [loadOnInit]="true">
+    </app-image-viewer>
+  </div>
+</div>

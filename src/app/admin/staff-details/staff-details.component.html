@@ -1,0 +1,37 @@
+<div class="contanier" *ngIf="dataSource" hover ="true" style="width: 100%; margin-top: 20px; margin-left: 20px" >  
+    <table  mat-table  [dataSource]="dataSource" class="mat-elevation-z8">
+      <ng-container matColumnDef="surname">
+        <th mat-header-cell *matHeaderCellDef>SURNAME </th>
+        <td  width=150px mat-cell *matCellDef="let element"> {{element.surname}} </td>
+      </ng-container>
+      <ng-container matColumnDef="first_name">
+          <th mat-header-cell *matHeaderCellDef>First Name </th>
+          <td  width=100px mat-cell *matCellDef="let element"> {{element.first_name}} </td>
+      </ng-container>
+      <ng-container matColumnDef="role">
+          <th mat-header-cell *matHeaderCellDef>Role </th>
+          <td  width=100px mat-cell *matCellDef="let element"> {{element.role}} </td>
+      </ng-container>
+      <ng-container matColumnDef="created_at">
+          <th mat-header-cell *matHeaderCellDef>CreatedAt</th>
+          <td width=200px mat-cell *matCellDef="let element"> {{element.created_at}} </td>
+        </ng-container>
+        <ng-container matColumnDef="_id">
+            <th mat-header-cell *matHeaderCellDef>Id </th>
+            <td width=200px mat-cell *matCellDef="let element"> {{element._id}} </td>
+          </ng-container>
+      <ng-container matColumnDef="password">
+        <th mat-header-cell *matHeaderCellDef> Password </th>
+        <td width=150px mat-cell *matCellDef="let element"> {{element.password}} </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    </div>
+
+
+
+
+
+
+

@@ -1,0 +1,581 @@
+<button mat-mini-fab color=''>
+  <mat-icon aria-label="icon" (click)="close()">
+    &times;
+  </mat-icon>
+</button><br><br>
+<div *ngIf="data['details']['name']" class="container ">
+  <nav class="navbar navbar-expand-lg navbar-fixed-top p">
+    <a class="navbar-brand p">{{data['details']['name']}} </a>
+  </nav>
+  <br>
+  <mat-tab-group>
+    <mat-tab width=60pc; label="Customer Details"><br>
+      <div class="applyOnMainDiv">
+        <mat-card style=" padding-bottom: 1px;" class="mat-elevation-z8">
+          <table class="table table-bordered">
+            <tr class="center">
+              <td>Name</td>
+              <td>{{data['details']['name']}}</td>
+            </tr>
+            <tr class="center">
+              <td>Date Of Birth</td>
+              <td>{{data['details']['dob']}}</td>
+            </tr>
+            <tr class="center">
+              <td>Gender</td>
+              <td>{{data['details']['gender']}}</td>
+            </tr>
+            <tr class="center">
+              <td>Nationality</td>
+              <td>{{data['details']['nationality']}}</td>
+            </tr>
+            <tr class="center">
+              <td>Company Name</td>
+              <td>{{data['details']['company_name']}}</td>
+            </tr>
+            <tr class="center">
+              <td>Date Of Joining</td>
+              <td>{{data['details']['date_of_joining']}}</td>
+            </tr>
+            <tr class="center">
+              <td>ABN</td>
+              <td>{{data['details']['abn']}}</td>
+            </tr>
+            <tr class="center">
+              <td>ACN</td>
+              <td>{{data['details']['acn']}}</td>
+            </tr>
+            <tr class="center">
+              <td>TFN</td>
+              <td>{{data['details']['tfn']}}</td>
+            </tr>
+            <tr class="center">
+              <td>BAS Period</td>
+              <td>{{data['details']['bas_period']}}</td>
+            </tr>
+            <tr class="center">
+              <td>Preferred BookKeeper</td>
+              <td *ngIf="data['details']['preferred_bookkeeper']!=''">{{data['details']['preferred_bookkeeper']}}</td>
+              <td *ngIf="data['details']['preferred_bookkeeper'] == ''">no preferred</td>
+
+            </tr>
+            <tr class="center">
+              <td>Preferred Accountant</td>
+              <td *ngIf="data['details']['preferred_accountant']!=''">{{data['details']['preferred_accountant']}}</td>
+              <td *ngIf="data['details']['preferred_accountant'] == ''">no preferred</td>
+            </tr>
+            <tr class="center">
+              <td>External Customer</td>
+              <td>{{data['details']['external_customer']}}</td>
+            </tr>
+            <tr class="center">
+              <td>Email</td>
+              <td>{{data['details']['email']}}</td>
+            </tr>
+            <tr class="center">
+              <td>Marital Status</td>
+              <td>{{data['details']['marital status']}}</td>
+
+            </tr>
+            <tr class="center">
+              <td>Number Of Children</td>
+              <td>{{data['details']['number_of_children']}}</td>
+            </tr>
+            <tr class="center">
+              <td>Phone</td>
+              <td>
+                <li type=none *ngIf="data['details']['phone']['mobile']!=''">{{data['details']['phone']['mobile']}}
+                </li>
+                <li type=none *ngIf="data['details']['phone']['home']!=''">{{data['details']['phone']['home']}}</li>
+                <li type=none *ngIf="data['details']['phone']['work']!=''">{{data['details']['phone']['work']}}</li>
+              </td>
+            </tr>
+            <tr class="center">
+              <td> Address</td>
+
+              <td type=none ng-repeat="let address of address" ng-bind="address + ( ', ')">
+                <!-- <li type=none *ngFor="let doc of doc; let isLast=last"> -->
+                <li type=none *ngIf="address['line']!=''">{{address['line']}}</li>
+                <li type=none>{{address['street']}}</li>
+                <li type=none>{{address['city']}}</li>
+                <li type=none>{{address['state/territory']}}</li>
+                <li type=none>{{address['post_code']}}</li>
+              </td>
+
+            </tr>
+            <tr class="center">
+              <td>Spouse</td>
+              <td>
+                <li type=none>{{data['details']['spouse']['name']}}</li>
+                <li type=none>{{data['details']['spouse']['dob']}}</li>
+                <li type=none>{{data['details']['spouse']['name']}}</li>
+                <li type=none>{{data['details']['spouse']['phone']}}</li>
+                <li type=none>{{data['details']['spouse']['email']}}</li>
+                <li type=none>{{data['details']['spouse']['tfn']}}</li>
+              </td>
+            </tr>
+          </table>
+
+        </mat-card>
+      </div>
+    </mat-tab>
+    <mat-tab label="Actions">
+      <div class="applyOnMainDiv">
+        <!-- <mat-card-header> -->
+        <p style="font-size: 18px; font-weight: 600; margin: 0 10px 0 3px;">CURRENT CLAIMS</p>
+        <!-- </mat-card-header><br> -->
+        <div class="applyOnDiv" *ngIf="claims.length>0">
+          <mat-card class="applyOnCard" style="width:400px" *ngFor="let i of z">
+            <mat-card-content>
+              <table class="table table-bordered">
+                <tr>
+                  <td><b>Period</b></td>
+                  <td>{{claims[i][0]}}</td>
+                </tr>
+                <tr>
+                  <td><b>For Year</b></td>
+                  <td>{{claims[i][1]}}</td>
+                </tr>
+                <tr>
+                  <td><b>For Month</b></td>
+                  <td>{{claims[i][2]}}</td>
+                </tr>
+                <tr>
+                  <td><b>Status</b></td>
+                  <td>{{stat[i]["status"]}}</td>
+                </tr>
+                <tr style="height: 7pc; " *ngIf="stat[i]['docs'].length!=0">
+                  <td colspan="2"><b>Attached Docs</b>
+                    <p style="white-space: pre-wrap">{{doc_string[i]}}</p>
+                  </td>
+                </tr>
+                <tr style="height: 7pc; " *ngIf="stat[i]['docs'].length<=0">
+                  <td colspan="2"><b>Attached Docs</b>
+                    <p style="white-space: pre-wrap"> no documents uploaded</p>
+                  </td>
+                </tr>
+              </table>
+              <div class="text-center">
+                <button mat-button style="margin-bottom: 0" type="submit" (click)="view(i)">View</button>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <!-- <mat-card-header> -->
+        <p style="font-size: 18px; font-weight: 600; margin: 3% 10px 0 3px;">CLAIM INITIATION</p>
+        <!-- </mat-card-header> -->
+        <mat-card class="applyOnCard1">
+          <mat-card-content>
+            <label class="period">For Duration:</label>
+            <mat-form-field style="width: 15%">
+              <input matInput [matDatepicker]="dp" placeholder="Year" [formControl]="date">
+              <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+              <mat-datepicker #dp startView="multi-year" (yearSelected)="chosenYearHandler($event, dp)"
+                panelClass="example-month-picker">
+              </mat-datepicker>
+            </mat-form-field>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <mat-form-field style="width: 15%" *ngIf="bas_period.length >1">
+              <mat-select [(ngModel)]="Selected">
+                <mat-option *ngFor="let period of bas_period" [value]="period">{{period}}</mat-option>
+              </mat-select>
+            </mat-form-field>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <mat-form-field style="width: 15%" *ngIf="bas_period.length == 1">
+              <mat-select [(ngModel)]="Selected">
+                <mat-option *ngFor="let period of bas_period" [value]="period">{{period}}</mat-option>
+              </mat-select>
+            </mat-form-field>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+            <mat-form-field style="width: 15%">
+              <select matNativeControl required required *ngIf="Selected == 'quarterly'" [(ngModel)]="opt">
+                <!-- <option [value]="claims[2]">{{claims[2]}}</option> -->
+                <option value="q1">Q1</option>
+                <option value="q2">Q2</option>
+                <option value="q3">Q3</option>
+                <option value="q4">Q4</option>
+              </select>
+              <select matNativeControl required *ngIf="Selected == 'monthly'" [(ngModel)]="opt">
+                <!-- <option [value]="claims[2]">{{claims[2]}}</option> -->
+                <option value="jan">Jan</option>
+                <option value="feb">Feb</option>
+                <option value="mar">Mar</option>
+                <option value="apr">Apr</option>
+                <option value="may">May</option>
+                <option value="jun">Jun</option>
+                <option value="jul">Jul</option>
+                <option value="aug">Aug</option>
+                <option value="sep">Sep</option>
+                <option value="oct">Oct</option>
+                <option value="nov">Nov</option>
+                <option value="dec">Dec</option>
+              </select>
+              <select matNativeControl required *ngIf="Selected == 'annually'" [(ngModel)]="opt">
+                <!-- <option [value]="claims[2]">{{claims[2]}}</option> -->
+                <option value="A1">A1</option>
+              </select>
+              <select matNativeControl *ngIf="Selected == null">none</select>
+            </mat-form-field>
+            <span class="spaner" style="float: right; margin-top: 19px">
+              <button mat-button type="submit" (click)="allot()">Inititate</button>
+            </span>
+          </mat-card-content>
+        </mat-card>
+        <!-- <mat-card-header align=center> -->
+        <p style="font-size: 18px; font-weight: 600; margin: 3% 10px 0 3px;">DOCUMENTS UPLOAD</p>
+        <!-- </mat-card-header> -->
+        <mat-card class="applyOnCard2">
+          <mat-card-content>
+            <label class="period">For Duration:</label>
+            <mat-form-field style="width: 15%">
+              <input matInput [matDatepicker]="dp1" placeholder="Year" [formControl]="date">
+              <mat-datepicker-toggle matSuffix [for]="dp1"></mat-datepicker-toggle>
+              <mat-datepicker #dp1 startView="multi-year" (yearSelected)="chosenYearHandler($event, dp1)"
+                panelClass="example-month-picker">
+              </mat-datepicker>
+            </mat-form-field>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <mat-form-field style="width: 15%" *ngIf="bas_period.length == 1">
+              <mat-select [(ngModel)]="Selected">
+                <mat-option *ngFor="let period of bas_period" [value]="period">{{period}}</mat-option>
+              </mat-select>
+            </mat-form-field>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <mat-form-field style="width: 15%" *ngIf="bas_period.length >1">
+              <mat-select [(ngModel)]="Selected">
+                <mat-option *ngFor="let period of bas_period" [value]="period">{{period}}</mat-option>
+              </mat-select>
+            </mat-form-field>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <mat-form-field style="width: 15%">
+              <select matNativeControl required required *ngIf="Selected == 'quarterly'" [(ngModel)]="opt">
+                <option *ngFor="let i of z" [value]="claims[i][2]">{{claims[i][2]}}</option>
+              </select>
+              <select matNativeControl required *ngIf="Selected == 'monthly'" [(ngModel)]="opt">
+                <option *ngFor="let i of z" [value]="claims[i][2]">{{claims[i][2]}}</option>
+              </select>
+              <select matNativeControl required *ngIf="Selected == 'annually'" [(ngModel)]="opt">
+                <option *ngFor="let i of z" [value]="claims[i][2]">{{claims[i][2]}}</option>
+                <!-- <option value="a1">A1</option> -->
+              </select>
+              <select matNativeControl *ngIf="Selected == null">none</select>
+            </mat-form-field>
+            <div class="marge" *ngFor="let i of p">
+              <label class="k">Select Documents: </label>&nbsp;&nbsp;
+              <mat-form-field>
+                <select matNativeControl ngrequired (change)="option($event,i)">
+                  <option value="bankstatement">BankStatement</option>
+                  <option value="houserentstatement">HouseRentStatement</option>
+                  <option value="houseloanstatement">HouseLoanStatement</option>
+                  <option value="pfstatement">PfStatement</option>
+                  <option value="donationstatement">DonationStatement</option>
+                  <option value="miscellaneous">Miscellaneous</option>
+                </select>
+              </mat-form-field>&nbsp;&nbsp;
+              <mat-form-field>
+                <input autocomplete="off" matInput autocomplete="off" placeholder="" [value]='i["filename"]'>
+              </mat-form-field>
+              <label class="fileContainer">
+                <mat-icon>link</mat-icon>
+                <input autocomplete="off" type="file" (change)="select($event, i)" />
+              </label>
+              <button mat-icon-button (click)="addrow()">
+                <mat-icon aria-label="hihihi">add</mat-icon>
+              </button>
+              <!-- </div> -->
+              <p>&nbsp;</p>
+            </div>
+            <p>&nbsp;</p>
+            <div class="text-right">
+              <button mat-button class="btn" type="submit" (click)="upload()">Upload</button>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>
+<div *ngIf="data['details']['owner_name']" class="container ">
+  <nav class="navbar navbar-expand-lg  navbar-fixed-top p ">
+    <a class="navbar-brand  p">
+      <h5>{{data['details']['owner_name']}}</h5>
+    </a>
+  </nav>
+  <br>
+  <mat-tab-group>
+    <mat-tab width=60pc; label=" Company Details"><br>
+      <div class="applyOnMainDiv">
+        <mat-card style=" padding-bottom: 1px;" class="mat-elevation-z8">
+          <table class="table table-bordered">
+            <tr class="center">
+              <td>Company Name</td>
+              <td>{{data['details']['company_name']}}</td>
+            </tr>
+            <tr class="center">
+              <td>Owner Name</td>
+              <td>{{data['details']['owner_name']}}</td>
+            </tr>
+            <tr class="center">
+              <td>Date Of Birth</td>
+              <td>{{data['details']['dob']}}</td>
+            </tr>
+            <tr class="center">
+              <td>Gender</td>
+              <td>{{data['details']['gender']}}</td>
+            </tr>
+            <tr class="center">
+              <td>Nationality</td>
+              <td>{{data['details']['nationality']}}</td>
+            </tr>
+            <tr class="center">
+              <td>ABN:</td>
+              <td>{{data['details']['abn']}}</td>
+            </tr>
+            <tr class="center">
+              <td>ACN</td>
+              <td>{{data['details']['acn']}}</td>
+            </tr>
+            <tr class="center">
+              <td>TFN</td>
+              <td>{{data['details']['tfn']}}</td>
+            </tr>
+            <tr class="center">
+              <td>Business Name</td>
+              <td>{{data['details']['business_name']}}</td>
+            </tr>
+
+            <tr class="center">
+              <td>Formation Date</td>
+              <td>{{data['details']['formation_date']}}</td>
+            </tr>
+            <tr class="center">
+              <td>GST</td>
+              <td>{{data['details']['gst']}}</td>
+            </tr>
+            <tr class="center">
+              <td>Payer</td>
+              <td>{{data['details']['payer']}}</td>
+            </tr>
+            <tr class="center">
+              <td>BAS Period</td>
+              <td>{{data['details']['bas_period']}}</td>
+            </tr>
+
+            <tr class="center">
+              <td>Email</td>
+              <td>{{data['details']['email']}}</td>
+            </tr>
+            <tr class="center">
+              <td>Preferred BookKeeper</td>
+              <td *ngIf="data['details']['preferred_bookkeeper']!=''">{{data['details']['preferred_bookkeeper']}}</td>
+              <td *ngIf="data['details']['preferred_bookkeeper'] == ''">no preferred</td>
+
+            </tr>
+            <tr class="center">
+              <td>Preferred Accountant</td>
+              <td *ngIf="data['details']['preferred_accountant']!=''">{{data['details']['preferred_accountant']}}</td>
+              <td *ngIf="data['details']['preferred_accountant'] == ''">no preferred</td>
+            </tr>
+            <tr class="center">
+              <td>Phone</td>
+              <td>
+                <li type="none" *ngIf="data['details']['phone']['mobile']!=''">{{data['details']['phone']['mobile']}}
+                </li>
+                <li type="none" *ngIf="data['details']['phone']['home']!=''">{{data['details']['phone']['home']}}</li>
+                <li type="none" *ngIf="data['details']['phone']['work']!=''">{{data['details']['phone']['work']}}</li>
+              </td>
+            </tr>
+            <tr class="center">
+              <td>Business Address</td>
+              <td>
+                <li *ngIf="data['details']['business_address']['line']!=''">
+                  {{data['details']['business_address']['line']}},</li>
+                <li type="none">{{data['details']['business_address']['street']}},</li>
+                <li type="none">{{data['details']['business_address']['city']}},</li>
+                <li type="none">{{data['details']['business_address']['state/territory']}},</li>
+                <li type="none">{{data['details']['business_address']['post_code']}}</li>
+              </td>
+            </tr>
+            <tr class="center">
+              <td>Registered Address</td>
+              <td>
+                <li type="none" *ngIf="data['details']['registered_address']['line']!=''">
+                  {{data['details']['registered_address']['line']}},</li>
+                <li type="none">{{data['details']['registered_address']['street']}},</li>
+                <li type="none">{{data['details']['registered_address']['city']}},</li>
+                <li type="none">{{data['details']['registered_address']['state/territory']}},</li>
+                <li type="none">{{data['details']['registered_address']['post_code']}}</li>
+              </td>
+            </tr>
+          </table>
+        </mat-card>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="Actions"><br>
+      <div class="applyOnMainDiv">
+        <p style="font-size: 18px; font-weight: 600; margin: 0 10px 0 3px;">CURRENT CLAIMS</p>
+        <!-- <mat-card-header>
+          <mat-card-title></mat-card-title>
+        </mat-card-header> -->
+        <div class="applyOnDiv" *ngIf="claims.length>0">
+          <mat-card class="applyOnCard" style="width:400px" *ngFor="let i of z">
+            <mat-card-content>
+              <table class="table table-bordered">
+                <tr>
+                  <td><b>Period</b></td>
+                  <td>{{claims[i][0]}}</td>
+                </tr>
+                <tr>
+                  <td><b>For Year</b></td>
+                  <td>{{claims[i][1]}}</td>
+                </tr>
+                <tr>
+                  <td><b>For Month</b></td>
+                  <td>{{claims[i][2]}}</td>
+                </tr>
+                <tr>
+                  <td><b>Status</b></td>
+                  <td>{{stat[i]["status"]}}</td>
+                </tr>
+                <tr style="height: 7pc;" *ngIf="stat[i]['docs'].length!=0">
+                  <td colspan="2"><b>Attached Docs</b>
+                    <p>{{doc_string[i]}}</p>
+                  </td>
+                </tr>
+                <tr style="height: 7pc;" *ngIf="stat[i]['docs'].length<=0">
+                  <td colspan="2"><b>Attached Docs</b>
+                    <p> no documents uploaded</p>
+                  </td>
+                </tr>
+              </table>
+              <!-- {{i}} -->
+              <div class="text-center">
+                <button mat-button style="margin-bottom: 0" type="submit" (click)="view(i)">View</button>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <p style="font-size: 18px; font-weight: 600; margin: 3% 10px 0 3px;">CLAIM INITIATION</p>
+        <mat-card class="applyOnCard1">
+          <mat-card-content>
+            <label class="period">For Duration:</label>
+            <mat-form-field style="width: 15%">
+              <input matInput [matDatepicker]="dp2" placeholder="Year" [formControl]="date">
+              <mat-datepicker-toggle matSuffix [for]="dp2"></mat-datepicker-toggle>
+              <mat-datepicker #dp2 startView="multi-year" (yearSelected)="chosenYearHandler($event, dp2)"
+                panelClass="example-month-picker">
+              </mat-datepicker>
+            </mat-form-field>&nbsp;&nbsp;&nbsp;&nbsp;
+            <mat-form-field style="width: 15%" *ngIf="bas_period.length >1">
+              <mat-select [(ngModel)]="Selected">
+                <mat-option *ngFor="let period of bas_period" [value]="period">{{period | titlecase}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field style="width: 15%" *ngIf="bas_period.length == 1">
+              <mat-select [(ngModel)]="Selected">
+                <mat-option *ngFor="let period of bas_period" [value]="period">{{period | titlecase}}</mat-option>
+              </mat-select>
+            </mat-form-field>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <mat-form-field style="width: 15%">
+              <select matNativeControl required required *ngIf="Selected == 'quarterly'" [(ngModel)]="opt">
+                <!-- <option [value]="claims[2]">{{claims[2]}}</option> -->
+                <option value="q1">Q1</option>
+                <option value="q2">Q2</option>
+                <option value="q3">Q3</option>
+                <option value="q4">Q4</option>
+              </select>
+              <select matNativeControl required *ngIf="Selected == 'monthly'" [(ngModel)]="opt">
+                <!-- <option [value]="claims[2]">{{claims[2]}}</option> -->
+                <option value="jan">Jan</option>
+                <option value="feb">Feb</option>
+                <option value="mar">Mar</option>
+                <option value="apr">Apr</option>
+                <option value="may">May</option>
+                <option value="jun">Jun</option>
+                <option value="jul">Jul</option>
+                <option value="aug">Aug</option>
+                <option value="sep">Sep</option>
+                <option value="oct">Oct</option>
+                <option value="nov">Nov</option>
+                <option value="dec">Dec</option>
+              </select>
+              <select matNativeControl required *ngIf="Selected == 'annually'" [(ngModel)]="opt">
+                <!-- <option [value]="claims[2]">{{claims[2]}}</option> -->
+                <option value="A1">A1</option>
+              </select>
+              <select matNativeControl *ngIf="Selected == null">none</select>
+            </mat-form-field>
+            <span class="spaner" style="float: right; margin-top: 22px">
+              <button mat-button type="submit" (click)="allot()">Inititate</button>
+            </span>
+            <!-- </div> -->
+          </mat-card-content>
+        </mat-card>
+        <p style="font-size: 18px; font-weight: 600; margin:3% 10px 0 3px;">DOCUMENTS UPLOAD</p>
+        <mat-card class="applyOnCard2">
+          <mat-card-content>
+            <label class="period">For Duration:</label>
+            <mat-form-field style="width: 15%">
+              <input matInput [matDatepicker]="dp4" placeholder="Year" [formControl]="date">
+              <mat-datepicker-toggle matSuffix [for]="dp4"></mat-datepicker-toggle>
+              <mat-datepicker #dp4 startView="multi-year" (yearSelected)="chosenYearHandler($event, dp4)"
+                panelClass="example-month-picker">
+              </mat-datepicker>
+            </mat-form-field>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <mat-form-field style="width: 15%" *ngIf="bas_period.length == 1">
+              <mat-select [(ngModel)]="Selected">
+                <mat-option *ngFor="let period of bas_period" [value]="period">{{period | titlecase}}</mat-option>
+              </mat-select>
+            </mat-form-field>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <mat-form-field style="width: 15%" *ngIf="bas_period.length >1">
+              <mat-select [(ngModel)]="Selected">
+                <mat-option *ngFor="let period of bas_period" [value]="period">{{period | titlecase}}</mat-option>
+              </mat-select>
+            </mat-form-field>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <mat-form-field style="width: 15%">
+              <select matNativeControl required required *ngIf="Selected == 'quarterly'" [(ngModel)]="opt">
+                <option [value]="for_q">{{for_q}}</option>
+              </select>
+              <select matNativeControl required *ngIf="Selected == 'monthly'" [(ngModel)]="opt">
+                <option [value]="for_m">{{for_m }}</option>
+              </select>
+              <select matNativeControl required *ngIf="Selected == 'annually'" [(ngModel)]="opt">
+                <option [value]="for_y">{{for_y}}</option>
+              </select>
+              <select matNativeControl *ngIf="Selected == null">none</select>
+            </mat-form-field>
+            <div class="marge" *ngFor="let i of p">
+              <label class="k">Select Documents: </label>&nbsp;&nbsp;
+              <mat-form-field>
+                <select matNativeControl ngrequired (change)="option($event,i)">
+                  <option value="bankstatement">BankStatement</option>
+                  <option value="houserentstatement">HouseRentStatement</option>
+                  <option value="houseloanstatement">HouseLoanStatement</option>
+                  <option value="pfstatement">PfStatement</option>
+                  <option value="donationstatement">DonationStatement</option>
+                  <option value="miscellaneous">Miscellaneous</option>
+                </select>
+              </mat-form-field>&nbsp;&nbsp;
+              <mat-form-field>
+                <input autocomplete="off" matInput autocomplete="off" autocomplete="off" placeholder=""
+                  [value]='i["filename"]'>
+              </mat-form-field>
+              <label class="fileContainer">
+                <mat-icon>link</mat-icon>
+                <input autocomplete="off" type="file" (change)="select($event, i)" />
+              </label>
+              <button style="padding: 0 24px 0 0;" mat-icon-button (click)="addrow()">
+                <mat-icon aria-label="hihihi">add_circle</mat-icon>
+              </button>
+              <!-- <button *ngIf=" s>0" mat-icon-button aria-label="Clear" (click)="removeRow()">
+                <mat-icon *ngIf="s!=0">remove_circle</mat-icon>
+              </button> -->
+              <!-- </div> -->
+              <p>&nbsp;</p>
+            </div>
+            <div class="text-right ">
+              <button mat-button type="submit" (click)="upload()">Upload</button>
+            </div>
+            <p>&nbsp;</p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>

@@ -1,0 +1,93 @@
+<mat-tab-group>
+  <mat-tab label="Status">
+    <div *ngIf="dataSource" style="margin: 50px 0 0 50px;height:760px; width:90% !important">
+      <table mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="index">
+          <th width=100px mat-header-cell *matHeaderCellDef> S.No. </th>
+          <td width=100px mat-cell *matCellDef="let index = index"> {{index+1}} </td>
+        </ng-container>
+        <ng-container matColumnDef="c_name">
+          <th width=300px mat-header-cell *matHeaderCellDef>Name</th>
+          <td width=300px mat-cell *matCellDef="let element"> {{element.c_name}} </td>
+        </ng-container>
+        <ng-container matColumnDef="c_type">
+          <th width=100px mat-header-cell *matHeaderCellDef>Type </th>
+          <td width=100px mat-cell *matCellDef="let element"> {{element.c_type}} </td>
+        </ng-container>
+        <ng-container matColumnDef="case">
+          <th width=200px mat-header-cell *matHeaderCellDef>Case </th>
+          <td width=200px mat-cell *matCellDef="let element"> {{element.case}} </td>
+        </ng-container>
+        <ng-container matColumnDef="status_time">
+          <th width=300px mat-header-cell *matHeaderCellDef>Status Time </th>
+          <td width=300px mat-cell *matCellDef="let element"> {{element.status_time}} </td>
+        </ng-container>
+        <ng-container matColumnDef="status">
+          <th width=200px mat-header-cell *matHeaderCellDef>Status </th>
+          <td width=200px mat-cell *matCellDef="let element"> {{element.status}} </td>
+        </ng-container>
+        <ng-container matColumnDef="note">
+          <th width=200px mat-header-cell *matHeaderCellDef>Note </th>
+          <td width=200px mat-cell *matCellDef="let element"> {{element.note}} </td>
+        </ng-container>
+        <ng-container matColumnDef="view">
+          <th mat-header-cell *matHeaderCellDef> </th>
+          <td mat-cell width=100px *matCellDef="let row">
+            <button mat-raised-button width=100px (click)="view(row)">View</button>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      </table>
+      <ng-container>
+        <div align="center" *ngIf="dataSource == ''">
+          <p style="margin-top: 10%;">No Claim Initiated</p>
+        </div>
+      </ng-container>
+    </div>
+
+  </mat-tab>
+
+  <!-- <ng-template #elseBlock>No Status is present</ng-template> -->
+
+  <!-- <mat-tab label=" All Status">
+    <div style="margin: 50px 0 0 50px;height:760px; width:90% !important">
+      <table mat-table #table [dataSource]="dataSource1">
+        <ng-container matColumnDef="index">
+          <th width=100px mat-header-cell *matHeaderCellDef> S.No. </th>
+          <td width=100px mat-cell *matCellDef="let index = index"> {{index+1}} </td>
+        </ng-container>
+        <ng-container matColumnDef="c_name">
+          <th width=350px mat-header-cell *matHeaderCellDef>Name</th>
+          <td width=350px mat-cell *matCellDef="let element"> {{element.c_name}} </td>
+        </ng-container>
+        <ng-container matColumnDef="c_type">
+          <th width=100px mat-header-cell *matHeaderCellDef>Type </th>
+          <td width=100px mat-cell *matCellDef="let element"> {{element.c_type}} </td>
+        </ng-container>
+        <ng-container matColumnDef="case">
+          <th width=150px mat-header-cell *matHeaderCellDef> Case </th>
+          <td width=150px mat-cell *matCellDef="let element"> {{element.case}} </td>
+        </ng-container>
+        <ng-container matColumnDef="status_time">
+          <th width=250px mat-header-cell *matHeaderCellDef>Time </th>
+          <td width=250px mat-cell *matCellDef="let element"> {{element.status_time}} </td>
+        </ng-container>
+        <ng-container matColumnDef="status">
+          <th width=200px mat-header-cell *matHeaderCellDef>Status </th>
+          <td width=200px mat-cell *matCellDef="let element"> {{element.status}} </td>
+        </ng-container>
+        <ng-container matColumnDef="view">
+          <th width=100px mat-header-cell *matHeaderCellDef> </th>
+          <mat-cell width=100px *matCellDef="let row">
+            <button mat-button width=100px (click)="view(row)">View</button>
+
+          </mat-cell>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+  </mat-tab> -->
+</mat-tab-group>

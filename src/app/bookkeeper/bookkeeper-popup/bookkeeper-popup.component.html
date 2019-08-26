@@ -1,0 +1,99 @@
+<div style="float:right">
+  <!-- <button>Go To Home Page</button> -->
+    <!-- <a href='/bookkeeper/status' target="_blank">Go To Home Page</a> -->
+    <!-- <a href="{{home()}}" target="_blank">Go To Home Page</a> -->
+    <button class="button1" (click)="home()">Go To Home Page</button>
+  </div>
+<div class="container-fluid">
+  <mat-card style=" margin: 5% 10%;" class="border"  class="mat-elevation-z8">
+    <div align="center" class="twenty">
+      <div class='ex'>
+        <table class="table table-bordered">
+          <tr *ngIf="s.c_type!='company'">
+            <td style=" font-weight: 600;">Customer Name:</td>
+            <td>{{s.c_name}}</td>
+          </tr>
+          <tr *ngIf="s.c_type=='company'">
+            <td style=" font-weight: 600;">Compay Name:</td>
+            <td>{{s.c_name}}</td>
+
+          </tr>
+          <tr>
+            <td style=" font-weight: 600;">Case:</td>
+            <td>
+              <h6>Year:&nbsp;&nbsp;{{claims[0]}}</h6>
+              <h6>Category:&nbsp;&nbsp;{{claims[1]}}</h6>
+              <h6>For:&nbsp;&nbsp;{{claims[2]}}</h6>
+            </td>
+          </tr>
+          <tr *ngIf="st">
+            <td style="font-weight: 600;">Present Status:</td>
+            <td>{{st.status}}</td>
+          </tr>
+          <!-- <tr *ngIf="c!=[]">
+            <td style="font-weight: 600;">Documents attached:</td>
+            <td>{{c}}</td>
+          </tr> -->
+          <tr *ngIf="c">
+            <td style="font-weight: 600;">Documents attached:</td>
+            <td *ngIf="c.length<=0 || c==null">No Documents</td>
+            <td *ngIf="c.length!=0">{{c}}</td>
+          </tr>
+        </table>
+        <p>&nbsp;</p>
+        <div *ngIf="st">
+          <div *ngIf=" st.status != 'bookkeeper_inreview'">
+            <div *ngIf='flag0'>
+              <h6><b>Do You Want To Accept the Task?</b></h6>
+              <br>
+              <button mat-button type="submit" (click)="accept()">Accept</button>
+              <button mat-button type="submit" (click)="close(index)">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+</div>
+<mat-card *ngIf="st && st.status == 'bookkeeper_inreview'" style=" margin: 5% 10%;" class="border"
+  class="mat-elevation-z8">
+  <div align="center">
+    <label style="font-size:170%; ">TIME &nbsp;COUNTER</label>
+    <br>
+    <div id="countdown" *ngIf="d">
+      <div class="hour"><span class="num"></span>{{d["_data"]['hours']}}<span class="word">hours</span></div>
+      <div class="min"><span class="num"></span>{{d["_data"]['minutes']}}<span class="word">min</span></div>
+      <div class="sec"><span class="num"></span>{{d["_data"]['seconds']}}<span class="word">sec</span></div>
+    </div>
+    <div class='ex'>
+      <table class="table table-bordered">
+        <tr>
+          <td style="font-weight: 600; ">Present Status:</td>
+          <td class="t">{{st.status}}</td>
+        </tr>
+        <tr>
+          <td style="font-weight: 600;">Documents :</td>
+          <td>
+            <button mat-button type="submit" (click)="view()">Check Documents</button>
+          </td>
+        </tr>
+        <!-- <tr>
+            <td style="font-weight: 600; border:none">Note:</td></tr>        -->
+      </table>
+      <div>
+          <label style="float:left" for="comment"><b>Note:</b></label>
+          <textarea class="form-control" rows="5" id="comment" [(ngModel)]="note" placeholder=" Please Enter Note!"></textarea>
+        </div>
+      <div  class="row">
+        <div class="col-md-6">
+        <button mat-button type="submit" (click)="submit('ok')">Ok</button>
+      </div>
+        <!-- <span class="spacer"></span> -->
+        <div class="col-md-6">
+        <button mat-button type="submit" (click)="submit('hold')">Hold</button>
+      </div>
+        <!-- <span class="spacer"></span> -->
+      </div>
+    </div>
+  </div>
+</mat-card>

@@ -1,0 +1,53 @@
+.my-form{
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+   
+  .full-width {
+    width: 100%;
+  }
+  .spacer {
+    flex: 1 1 auto;
+  }
+  .half-width {
+    width: 50%;
+  }
+  .width {
+    width: 30%;
+  }
+  .list-group-item {
+    background-color: #fafafa;
+  }
+
+  // .example-small-box, .example-large-box {
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: center;
+  //   margin: 16px;
+  //   padding: 16px;
+  //   border-radius: 8px;
+  // }
+  
+  .example-small-box {
+    height: 100px;
+    width: 100px;
+  }
+  
+  .mat-button {
+    margin-top: 4%;
+    margin-bottom: 4%;
+    // margin-left: 128px;
+    background: #9E1820;;
+      color: white;
+    }
+    .list-group {
+      // background-color: #fafafa;
+      color: rgba(78, 56, 56, 0.87);
+  }
+    // .mat-card-actions .mat-button {
+    //   float: center;
+    // }
+  // .mat-card{
+  //   margin: 10px;
+  // }

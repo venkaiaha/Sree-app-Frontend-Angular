@@ -1,0 +1,53 @@
+<div class="example-container">
+  <mat-toolbar>
+    <mat-toolbar-row class="example-toolbar">
+      <div style="float:left">
+        <button mat-icon-button style="outline: none" (click)="snav.toggle()">
+          <mat-icon style="color: white; ">menu outline</mat-icon>
+        </button>
+        &nbsp;&nbsp; <img class="banner" src="assets/images/logo2.jpg" alt="Image">
+      </div>
+      <span class="spacer"></span>
+      <div>
+        <h2 style=" color:white; padding-top: 14%;">Logged in as {{username}} / {{role| titlecase}}</h2>
+      </div>
+      <span class="spacer"></span>
+      <div style="float:right; ">
+        <button style="outline: none" mat-button [matMenuTriggerFor]="menu">
+          <img class=" img-fluid rounded-0 " src="assets/Operator.png" alt="Image" />
+        </button>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <mat-sidenav-container class="example-sidenav-container">
+    <mat-sidenav #snav [mode]="'side'" fixedTopGap="56">
+      <mat-nav-list>
+        <a mat-list-item [routerLink]="['/operator/status']">Status</a>
+        <a mat-list-item [routerLink]="['/operator/search']">Search</a>
+        <a mat-list-item [routerLink]="['/operator/registration']">Registration</a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item (click)='openDialog()'>
+    <mat-icon>person_outline</mat-icon>Profile
+  </button>
+  <button mat-menu-item (click)="logout()">
+    <mat-icon>power_settings_new</mat-icon>Logout
+  </button>
+</mat-menu>
+<!-- <mat-menu #menu="matMenu">
+  <button mat-menu-item style="outline: none">{{username}}</button>
+  <button mat-menu-item [matMenuTriggerFor]="profile">Profile</button>
+  <button mat-menu-item (click)="logout()">Logout</button>
+</mat-menu>
+<mat-menu #profile="matMenu">
+  <button mat-menu-item>{{username}}</button>
+  <button mat-menu-item>Western toad</button>
+  <button mat-menu-item>Arroyo toad</button>
+  <button mat-menu-item>Yosemite toad</button>
+</mat-menu> -->

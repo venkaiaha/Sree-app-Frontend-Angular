@@ -1,0 +1,79 @@
+<mat-tab-group>
+  <mat-tab label="BookKeeper status">
+    <div class="contanier" style="margin: 50px 0 0 50px;height:740px; width:90% !important">
+      <mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="index">
+          <mat-header-cell *matHeaderCellDef> S.No. </mat-header-cell>
+          <mat-cell width=10px *matCellDef="let index = index"> {{index+1}} </mat-cell>
+        </ng-container>
+        <ng-container style="width:30px !important" matColumnDef=name>
+          <mat-header-cell *matHeaderCellDef> Name</mat-header-cell>
+          <mat-cell width=10px *matCellDef="let element"> {{element.name}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="role">
+          <mat-header-cell *matHeaderCellDef> Role</mat-header-cell>
+          <mat-cell width=100px *matCellDef="let element"> {{element.role}} </mat-cell>
+        </ng-container>
+        <ng-container style="width:30px" matColumnDef="Task Count">
+          <mat-header-cell *matHeaderCellDef>Task Count </mat-header-cell>
+          <mat-cell width=10px mat-cell *matCellDef="let element"> {{element.count}} </mat-cell>
+        </ng-container>
+        <ng-container style="width:400px" matColumnDef="Task List">
+            <mat-header-cell style="width:400px !important" *matHeaderCellDef>Task List </mat-header-cell>
+            <mat-cell (click)="view(element.task_list)" style="width:400px !important" mat-cell *matCellDef="let element"> 
+              <li type='none' *ngIf="element.task_list!=''">{{element.task_string}} </li><br>
+              <li type='none' *ngIf="element.task_list==''">No Tasks alloted </li>
+            </mat-cell>
+          </ng-container>
+        <ng-container matColumnDef="allot">
+          <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+          <mat-cell width=100px *matCellDef="let row">
+            <button mat-button width=100px (click)="popup()">Allot</button>
+          </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+    </div>
+  </mat-tab>
+  <mat-tab label="Accountant status">
+    <div class="contanier" style="margin: 50px 0 0 50px;height:740px; width:90% !important">
+      <mat-table [dataSource]="dataSource1">
+        <ng-container matColumnDef="index">
+          <mat-header-cell *matHeaderCellDef> S.No. </mat-header-cell>
+          <mat-cell width=100px *matCellDef="let index = index"> {{index+1}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="_id">
+          <mat-header-cell *matHeaderCellDef>Id </mat-header-cell>
+          <mat-cell width=300px *matCellDef="let element"> {{element._id}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef=name>
+          <mat-header-cell *matHeaderCellDef> Name</mat-header-cell>
+          <mat-cell width=100px *matCellDef="let element"> {{element.name}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="role">
+          <mat-header-cell *matHeaderCellDef> Role</mat-header-cell>
+          <mat-cell width=100px *matCellDef="let element"> {{element.role}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="Task Count">
+          <mat-header-cell *matHeaderCellDef>Task Count </mat-header-cell>
+          <mat-cell width=50px *matCellDef="let element"> {{element.count}} </mat-cell>
+        </ng-container>
+        <ng-container style="width:200px" matColumnDef="Task List">
+            <mat-header-cell *matHeaderCellDef>Task List </mat-header-cell>
+            <mat-cell (click)="view(element.task_list)" width=50px mat-cell *matCellDef="let element">
+                <li type= none *ngIf="element.task_list!=''">{{element.task_list[0]}} </li><br>
+              <li type='none' *ngIf="element.task_list==''">No Tasks alloted </li>  </mat-cell>
+          </ng-container>
+        <ng-container matColumnDef="allot">
+          <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+          <mat-cell width=50px *matCellDef="let row">
+            <button mat-button width=100px (click)="popup()">Initiate</button>
+          </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumn;"></mat-row>
+      </mat-table>
+    </div>
+  </mat-tab>
+</mat-tab-group>

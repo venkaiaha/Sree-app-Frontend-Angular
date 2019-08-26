@@ -1,0 +1,208 @@
+<mat-tab-group class="example" >
+  <mat-tab label="Company Detalis" >  
+      <!-- <input autocomplete="off" (keyup)="onKey($event)">&nbsp;&nbsp;
+      <input autocomplete="off" (keyup)="onKey($event)" >      -->
+    <mat-card-content >
+      <div class="search">
+      <mat-form-field  style="width: 50%">
+          <input  matInput autocomplete="off"  (keyup)="onKeyPress($event,'company')" [(ngModel)]="search" placeholder="Search based on ABN, ACN, TFN, company name etc.">
+        </mat-form-field>
+      </div>
+      <div   hover ="true" style=" margin-top: 20px; margin-left: 20px" > 
+        <!-- <mat-form-field style="margin-left: 300px" class="full-width"> -->
+           
+        <!-- </mat-form-field>  -->
+      <table  mat-table  [dataSource]="dataSource" matSort  matSortActive="created" matSortDirection="desc" class="mat-elevation-z8">
+          
+          <ng-container matColumnDef="company_name">
+              <th  mat-header-cell *matHeaderCellDef mat-sort-header>COMPANY NAME </th>
+              <td width=250px mat-cell *matCellDef="let element"> {{element.company_name}} </td>
+            </ng-container>
+            <ng-container matColumnDef="owner_name">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> OWNER NAME </th>
+                <td width=150px mat-cell *matCellDef="let element"> {{element.owner_name}} </td>
+              </ng-container>
+        <ng-container matColumnDef="abn">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>ABN </th>
+          <td  width=150px mat-cell *matCellDef="let element"> {{element.abn}} </td>
+        </ng-container>
+        <ng-container matColumnDef="acn">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>ACN </th>
+            <td  width=100px mat-cell *matCellDef="let element"> {{element.acn}} </td>
+        </ng-container>
+        <ng-container matColumnDef="tfn">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>TFN </th>
+            <td  width=100px mat-cell *matCellDef="let element"> {{element.tfn}} </td>
+        </ng-container>
+        <ng-container matColumnDef="business_name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header >BUSINESS NAME </th>
+            <td width=250px mat-cell *matCellDef="let element"> {{element.business_name}} </td>
+          </ng-container>
+        <ng-container matColumnDef="created_at">
+          <th mat-header-cell *matHeaderCellDef> Date</th>
+          <td width=100px mat-cell *matCellDef="let element"> {{element.created_at}} </td>
+        </ng-container>
+         <!--<ng-container matColumnDef="gst">
+          <th mat-header-cell *matHeaderCellDef>GST </th>
+          <td  width=50px mat-cell *matCellDef="let element"> {{element.gst}} </td>
+        </ng-container>  -->
+       
+        <ng-container matColumnDef="bas_period">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> BAS PERIOD </th>
+          <td width=100px mat-cell *matCellDef="let element"> {{element.bas_period}} </td>
+        </ng-container>
+        <ng-container matColumnDef="phone">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>PHONE</th>
+          <td  width=250px mat-cell *matCellDef="let element ">  
+              <ul> 
+                  <li type=none *ngIf="element.phone.mobile!=null">Mobile: {{element.phone.mobile}} </li>
+                  <li type=none *ngIf="element.phone.home!=null"> Home: {{element.phone.home}}</li>
+                  <li type=none  *ngIf="element.phone.work!=null">Work:   {{element.phone.work}}</li> 
+                </ul>
+                </td>
+        </ng-container>
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>EMAIL</th>
+          <td  width=150px mat-cell *matCellDef="let element"> {{element.email}} </td>
+        </ng-container>
+        <ng-container matColumnDef="preferred_accountant">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Preferred Accountant</th>
+            <td  width=150px mat-cell *matCellDef="let element">
+                <li type=none *ngIf="element.preferred_accountant!=''">{{element.preferred_accountant}}</li>
+                <li type=none *ngIf="element.preferred_accountant==''">No Preferred </li>
+               </td>
+          </ng-container>
+          <!-- <ng-container matColumnDef="preferred_bookkeeper">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Preferred BookKeeper</th>
+              <td  width=150px mat-cell *matCellDef="let element"> {{element.preferred_bookkeeper}} </td>
+            </ng-container> -->
+        <ng-container width=100px matColumnDef="view">
+          <mat-header-cell  width=100px *matHeaderCellDef >  </mat-header-cell>
+          <mat-cell width=100px *matCellDef="let row" >
+                <button  mat-raised-button width=100px (click)="popup(row,'company')" >Details</button>
+          </mat-cell>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <div>
+      <mat-paginator  [length]="length" [pageSizeOptions]= "[11,10,2,3,4,5,6,7,8,9,1]" ></mat-paginator>
+    </div>
+      </div>
+    </mat-card-content>
+    </mat-tab>
+<mat-tab label="Customer Details">       
+   <mat-card-content >
+      <div class="search">
+          <mat-form-field  style="width: 50%">
+              <input autocomplete="off" matInput autocomplete="off" autocomplete="off" (keyup)="onKeyPress($event,'customer')" placeholder="Search based on ABN, ACN, TFN, company name etc.">
+            </mat-form-field>
+          </div>
+  <div class="contanier"  hover ="true" style=" margin-top: 20px; margin-left: 20px" >  
+      <!-- <mat-form-field  style="margin-left: 300px" class="full-width"> -->
+         
+      <!-- </mat-form-field>  -->
+      <table  mat-table  [dataSource]="dataSource1" matSort  matSortActive="created" matSortDirection="desc" class="mat-elevation-z8">
+      <!-- <ng-container matColumnDef="surname">
+          <th mat-header-cell *matHeaderCellDef>Sur Name </th>
+          <td width=100px mat-cell *matCellDef="let element"> {{element.surname}} </td>
+        </ng-container> -->
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> NAME </th>
+            <td width=250px mat-cell *matCellDef="let element" > {{element.salutation}}  {{element.name}} </td>
+          </ng-container>
+          <ng-container matColumnDef="company_name">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>COMPANY NAME </th>
+              <td width=250px mat-cell *matCellDef="let element"> {{element.company_name}} </td>
+            </ng-container>
+          <ng-container matColumnDef="date_of_joining">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>DATE OF JOINING </th>
+              <td width=150px mat-cell *matCellDef="let element"> {{element.date_of_joining }} </td>
+            </ng-container>
+            <!-- <ng-container matColumnDef="nationality">
+                <th mat-header-cell *matHeaderCellDef>Nationality</th>
+                <td width=100px mat-cell *matCellDef="let element"> {{element.nationalty}} </td>
+              </ng-container> -->
+        <ng-container matColumnDef="abn">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>ABN </th>
+          <td  width=100px mat-cell *matCellDef="let element"> {{element.abn}} </td>
+        </ng-container>
+        <ng-container matColumnDef="acn">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>ACN </th>
+            <td  width=100px mat-cell *matCellDef="let element"> {{element.acn}} </td>
+        </ng-container>
+        <ng-container matColumnDef="tfn">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>TFN </th>
+            <td  width=100px mat-cell *matCellDef="let element"> {{element.tfn}} </td>
+        </ng-container>
+        <!-- <ng-container matColumnDef="joining_date">
+            <th mat-header-cell *matHeaderCellDef>Joining Date</th>
+            <td width=100px mat-cell *matCellDef="let element"> {{element.Joining_date}} </td>
+          </ng-container> -->
+          <ng-container matColumnDef="bas_period">
+              <th mat-header-cell *matHeaderCellDef  mat-sort-header> BAS PERIOD </th>
+              <td width=150px mat-cell *matCellDef="let element"> {{element.bas_period}} </td>
+            </ng-container>
+        <ng-container matColumnDef="phone">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>PHONE</th>
+          <td  width=250px mat-cell *matCellDef="let element "> 
+            <ul> 
+            <li type=none *ngIf="element.phone.mobile!=null">Mobile: {{element.phone.mobile}} </li>
+            <li type=none *ngIf="element.phone.home!=null"> Home: {{element.phone.home}}</li>
+            <li type=none  *ngIf="element.phone.work!=null">Work:{{element.phone.work}}</li> 
+          </ul>
+          </td>
+        </ng-container>       
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>EMAIL</th>
+          <td  width=220px mat-cell *matCellDef="let element"> {{element.email}} </td>
+        </ng-container>
+        <ng-container matColumnDef="preferred_accountant">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Preferred Accountant</th>
+          <td  width=150px mat-cell *matCellDef="let element">
+              <li type=none *ngIf="element.preferred_accountant!=''">{{element.preferred_accountant}}</li>
+              <li type=none *ngIf="element.preferred_accountant==''">No Preferred </li>
+             </td>
+        </ng-container>
+          <!-- <ng-container matColumnDef="preferred_bookkeeper">
+              <th mat-header-cell *matHeaderCellDef  mat-sort-header>Preferred BookKeeper</th>
+              <td  width=150px mat-cell *matCellDef="let element"> {{element.preferred_bookkeeper}} </td>
+            </ng-container> -->
+        <!-- <ng-container matColumnDef="external_customer">
+          <th mat-header-cell *matHeaderCellDef>External Customer </th>
+          <td width=100px mat-cell *matCellDef="let element"> {{element.external_customer}} </td>
+        </ng-container> -->
+        <!-- <ng-container matColumnDef="spouse['first_name']">
+            <th mat-header-cell *matHeaderCellDef>Spouse First Name </th>
+            <td width=150px mat-cell *matCellDef="let element"> {{element.spouse['first_name']}} </td>
+          </ng-container> -->
+        <!-- <ng-container matColumnDef="number_of_children">
+            <th mat-header-cell *matHeaderCellDef>Number Of Children </th>
+            <td width=100px mat-cell *matCellDef="let element"> {{element.number_of_children}} </td>
+          </ng-container> -->
+        
+        <!-- <ng-container matColumnDef="_id">
+          <th mat-header-cell *matHeaderCellDef>ID</th>
+          <td  width=200px mat-cell *matCellDef="let element"> {{element._id}} </td>
+        </ng-container> -->
+        <!-- <ng-container matColumnDef="created_at">
+          <th mat-header-cell *matHeaderCellDef>RegisteredTime</th>
+          <td  width=150px mat-cell *matCellDef="let element"> {{element.created_at}} </td>
+        </ng-container> -->
+        <ng-container width=100px matColumnDef="view">
+          <mat-header-cell  width=100px *matHeaderCellDef >  </mat-header-cell>
+          <mat-cell width=100px *matCellDef="let row" >
+                <button  mat-raised-button width=100px (click)="popup(row,'customer')" >Details</button>
+          </mat-cell>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumn"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumn;"></tr>
+      </table>
+      <div>
+          <mat-paginator [length]="length1"  [pageSizeOptions]="[5,2,3,4,1]" ></mat-paginator>
+        </div>
+    </div>
+    </mat-card-content>
+  </mat-tab>
+  
+    

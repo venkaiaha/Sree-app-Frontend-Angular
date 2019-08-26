@@ -1,0 +1,82 @@
+<mat-card class="mat-elevation-z8">
+  <mat-card-header>
+    <mat-card-title>Claim track</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <!-- <p>claim[0].c_name</p> -->
+    <mat-form-field *ngIf="c_type">
+      <mat-select placeholder="Select" (selectionChange)='claims($event)'>
+        <mat-option *ngFor="let type of c_type" [value]="type">{{type}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="Select" (selectionChange)='nameSelection($event)'>
+        <mat-option *ngFor="let names of selected_type" [value]="names">{{names}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="Select" (selectionChange)='caseSelection($event)'>
+        <mat-option *ngFor="let names of cases" [value]="names">{{names}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button  (click)="submit()"
+      aria-label="Button that displays a tooltip when focused or hovered over">
+      Ok
+    </button>
+  </mat-card-actions>
+</mat-card>
+<!-- <button mat-raised-button  [matTooltip]="submit()"
+      aria-label="Button that displays a tooltip when focused or hovered over">
+      Ok
+    </button> -->
+<div *ngIf="flag" style=" margin-left: 20pc; margin-top:10pc;">
+  <div id="showMe">
+    <p>&nbsp;</p>
+    <div id="containers">
+      <table>
+        <tr>
+          <td><b>Name</b></td>
+          <td>:<b>{{ name }}</b></td>
+        </tr>
+        <tr>
+          <td><b>Claim Type</b></td>
+          <td>:<b>{{ types}}</b></td>
+        </tr>
+        <tr>
+          <td><b>BAS_Period</b></td>
+          <td>:<b>{{ case }}</b></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <ul>
+    <div *ngFor="let i  of ls " class="vl">
+      <img class="tick" src="assets/img1.jpg" alt="Image">
+      <hr class="hr">
+      <div id="talkbubble" style="margin-top: -4pc;">
+        <tr>
+          <li>
+            <td class="fnt">Status </td>
+          </li>
+          <td style="padding-left: 26px;">:{{ i[0] }}</td>
+        </tr>
+
+        <tr>
+          <li>
+            <td class="fnt">Employ Role </td>
+          </li>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:{{ i[1]}}</td>
+        </tr>
+
+        <tr>
+          <li>
+            <td class="fnt">Note: </td>
+          </li>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:{{ i[2] }}</td>
+        </tr>
+      </div>
+    </div>
+  </ul>
+</div>

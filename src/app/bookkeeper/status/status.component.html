@@ -1,0 +1,127 @@
+<!-- <mat-form-field>
+  <input matInput type="number" [formControl]="selected">
+</mat-form-field> -->
+
+<mat-tab-group  [(selectedIndex)]="selected" >
+  
+  <mat-tab label="Tasks Status" >
+    <div style="margin: 50px 0 0 50px;height:760px; width:90% !important">
+      <table mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="index">
+          <th width=100px mat-header-cell *matHeaderCellDef> S.No. </th>
+          <td width=100px mat-cell *matCellDef="let index = index"> {{index+1}} </td>
+        </ng-container>
+        <ng-container matColumnDef="c_name">
+          <th width=350px mat-header-cell *matHeaderCellDef>Name</th>
+          <td width=350px mat-cell *matCellDef="let element"> {{element.c_name}} </td>
+        </ng-container>
+        <ng-container matColumnDef="c_type">
+          <th width=100px mat-header-cell *matHeaderCellDef>Type </th>
+          <td width=100px mat-cell *matCellDef="let element"> {{element.c_type}} </td>
+        </ng-container>
+        <ng-container matColumnDef="case">
+          <th width=150px mat-header-cell *matHeaderCellDef> Case </th>
+          <td width=150px mat-cell *matCellDef="let element"> {{element.case}} </td>
+        </ng-container>
+        <ng-container matColumnDef="status_time">
+          <th width=250px mat-header-cell *matHeaderCellDef>Status Time </th>
+          <td width=250px mat-cell *matCellDef="let element"> {{element.status_time}} </td>
+        </ng-container>
+        <ng-container matColumnDef="status">
+          <th width=200px mat-header-cell *matHeaderCellDef>Status </th>
+          <td width=200px mat-cell *matCellDef="let element"> {{element.status}} </td>
+        </ng-container>
+        <ng-container matColumnDef="note">
+          <th width=150px mat-header-cell *matHeaderCellDef> Note </th>
+          <td width=150px mat-cell *matCellDef="let element"> {{element.note}} </td>
+        </ng-container>
+        <ng-container matColumnDef="view">
+          <th width=100px mat-header-cell *matHeaderCellDef> </th>
+          <td width=100px *matCellDef="let row">
+            <!-- <div *ngIf="row.status == bookkeeper_pending"> -->
+            <!-- <button [disabled]="row.status == bookkeeper_pending" mat-button width=100px (click)="popup(row)" >Accept</button> -->
+            <!-- </div> -->
+            <!-- <div *ngIf="row.status != bookkeeper_inreview"> -->
+            <button mat-raised-button width=100px (click)="view(row,0)">View</button>
+            <!-- </div> -->
+            </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <ng-container>
+        <div  *ngIf="dataSource == ''">
+          <p style="margin: 10% 0 0 35%; font-size: 18px;">No Claim Initiated</p>
+        </div>
+      </ng-container>
+    </div>
+  </mat-tab>
+  <mat-tab label="All Tasks" >
+    <div style="margin: 50px 0 0 50px;height:760px; width:90% !important">
+      <table mat-table [dataSource]="dataSource1">
+        <ng-container matColumnDef="index">
+          <th width=100px mat-header-cell *matHeaderCellDef> S.No. </th>
+          <td width=100px mat-cell *matCellDef="let index = index"> {{index+1}} </td>
+        </ng-container>
+        <ng-container matColumnDef="_id">
+          <th width=350px mat-header-cell *matHeaderCellDef>Task Id </th>
+          <td width=350px mat-cell *matCellDef="let element"> {{element._id}} </td>
+        </ng-container>
+        <ng-container matColumnDef=c_id>
+          <th width=350px mat-header-cell *matHeaderCellDef>Claim Id</th>
+          <td width=350px mat-cell *matCellDef="let element"> {{element.c_id}} </td>
+        </ng-container>
+        <ng-container matColumnDef="c_name">
+          <th width=350px mat-header-cell *matHeaderCellDef>Name</th>
+          <td width=350px mat-cell *matCellDef="let element"> {{element.c_name}} </td>
+        </ng-container>
+        <ng-container matColumnDef="c_type">
+          <th width=100px mat-header-cell *matHeaderCellDef>Type </th>
+          <td width=100px mat-cell *matCellDef="let element"> {{element.c_type}} </td>
+        </ng-container>
+        <ng-container matColumnDef="case">
+          <th width=150px mat-header-cell *matHeaderCellDef> Case </th>
+          <td width=150px mat-cell *matCellDef="let element"> {{element.case}} </td>
+        </ng-container>
+        <ng-container matColumnDef="status_time">
+          <th width=250px mat-header-cell *matHeaderCellDef>Time </th>
+          <td width=250px mat-cell *matCellDef="let element"> {{element.status_time}} </td>
+        </ng-container>
+        <ng-container matColumnDef="status">
+          <th width=200px mat-header-cell *matHeaderCellDef>Status </th>
+          <td width=200px mat-cell *matCellDef="let element"> {{element.status}} </td>
+        </ng-container>
+        <!-- <ng-container width=100px matColumnDef="view">
+            <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+            <mat-cell width=100px *matCellDef="let row">
+              <button mat-raised-button width=100px (click)="view(row)">View</button>
+            </mat-cell>
+          </ng-container> -->
+        <ng-container matColumnDef="view">
+          <th width=250px mat-header-cell *matHeaderCellDef> </th>
+          <td width=250px *matCellDef="let row">
+            <!-- <div *ngIf="row.status == bookkeeper_pending"> -->
+            <!-- <button [disabled]="row.status == bookkeeper_pending" mat-button width=100px (click)="popup(row)" >Accept</button> -->
+            <!-- </div> -->
+            <!-- <div *ngIf="row.status != bookkeeper_inreview"> -->
+            <button mat-raised-button  (click)="view(row, 1)">View</button>
+            <!-- </div> -->
+            </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns1;"></tr>
+      </table>
+      <ng-container>
+        <div *ngIf="dataSource1 == ''">
+          <p style="margin: 10% 0 0 35%; font-size: 18px;">No Claim Initiated</p>
+        </div>
+      </ng-container>
+    </div>
+  </mat-tab>
+
+  <!-- <mat-tab label="Accountant status">
+      <app-accountant1></app-accountant1>
+    </mat-tab> -->
+</mat-tab-group>
+
+<!-- <app-bookkeeper-popup *ngIf='flag'></app-bookkeeper-popup> -->

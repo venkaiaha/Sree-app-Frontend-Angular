@@ -1,0 +1,40 @@
+<mat-card class="mat-elevation-z8">
+  <mat-card-header>
+    <mat-card-title>Staff Time Track</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <!-- <p>claim[0].c_name</p> -->
+    <mat-form-field *ngIf="roles">
+      <mat-select placeholder="Select" (selectionChange)='staffSelect($event)'>
+        <mat-option *ngFor="let role of roles" [value]="role">{{role | titlecase}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="Select" (selectionChange)='nameSelection($event)'>
+        <mat-option *ngFor="let name of names" [value]="name">{{name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker1" placeholder="From date" [formControl]="date" >
+      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker2" placeholder="To Date" [formControl]="serializedDate">
+      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-datepicker #picker2></mat-datepicker>
+    </mat-form-field>
+    <!-- <mat-form-field>
+      <mat-select placeholder="Select" (selectionChange)='caseSelection($event)'>
+        <mat-option *ngFor="let names of cases" [value]="names">{{names}}</mat-option>
+      </mat-select>
+    </mat-form-field> -->
+  </mat-card-content>
+  <!-- <mat-card-actions>
+    <button mat-raised-button  (click)="submit()"
+      aria-label="Button that displays a tooltip when focused or hovered over">
+      Ok
+    </button>
+  </mat-card-actions> -->
+</mat-card>

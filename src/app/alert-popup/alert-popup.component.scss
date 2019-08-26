@@ -1,0 +1,29 @@
+// .pull-left{
+// float: right;
+// // align-content: flex-end;
+// // align-items: left;
+// outline: none;
+// }
+// .alert{
+//     // min-width: 40%;
+//     height: 250px;
+//     // width: 350px;
+// }
+//  mat-toolbar{
+//     height: 1px;
+//     width: 350px;
+// }
+.mat-toolbar-single-row {
+    margin: -24px;
+    height: 50px;
+    width: 350px;
+}
+
+.span{
+    flex: 1 1 auto;
+}
+.mat-icon{
+    font-size: 30px;
+    align-items: center;
+    text-align: right;
+}

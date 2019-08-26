@@ -1,0 +1,68 @@
+.mat-toolbar-single-row {
+  min-height: 83px; 
+}
+// style for logo
+.banner{
+  border-radius: 4px ;
+  border-color: darkred;
+  width: 78%;
+}
+div{
+  margin-top: 3%;
+}
+.align-center {
+  margin: auto;
+}
+.example-form{
+  text-align: center;
+  margin: auto;
+}
+.text-danger{
+  line-height: 1;
+}
+.mat-hint{
+  color: red;
+}
+.mat-icon{
+color:#999999;
+}
+
+
+.banner1{
+  width:  22px;
+  color:#999999;
+}
+.block { 
+margin-top: 10px;
+}
+
+.mat-button {
+margin-top: 40px;
+margin-left: 128px;
+background: linear-gradient(to bottom,  #C6636D 0% , #9E1820  100%);
+color: white;
+}
+.example-form {
+padding-top: 60px;
+width: 245px;
+
+
+}
+.mat-card-header {
+height:25px;
+margin-top: 15px
+}
+// .mat-button-focus-overlay {
+//   background-color:blueviolet;
+// }
+.example-full-width{
+width: 205px;
+}
+.form-control:focus{
+  border-color: #cccccc;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+input.mat-input-element {
+  margin-top: -1.0625em;
+}

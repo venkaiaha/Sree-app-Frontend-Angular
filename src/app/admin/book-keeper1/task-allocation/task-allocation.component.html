@@ -1,0 +1,42 @@
+<table >
+  <!-- <tr>
+    <td><b>To Employ:</b></td>
+    <td>{{data.to_employ}}</td>
+  </tr>
+  <tr>
+    <td><b>To Employ Role:</b></td>
+    <td>{{data.to_employ_role}}</td>
+  </tr>
+  <tr> -->
+   <!--  <td><b>Claim Type:</b></td>
+    <td>{{data.c_type}}</td>
+  </tr>
+  <tr>
+      <td *ngIf=><b>CompanyName:</b></td>
+      <td>{{data.c_name}}</td>
+    </tr>
+  <tr>
+    <td><b>Case</b></td>
+    <td>{{data.case}}</td>
+  </tr> -->
+  <p>Do you want to proceed for initiation of claim ?</p>
+  <tr>
+   
+        <td><b>Note:</b></td>
+        <td>
+      <textarea style="margin-left: -17pc;" type="text" autocomplete="off" [(ngModel)]="note" name="note"></textarea>
+      
+    </td>
+  </tr>
+  <!-- <tr>
+      <td><b>Time Taken:</b></td>
+    <td> -->
+      <!-- <input type="text" autocomplete="off" [(ngModel)]="time_taken" name="time_taken"> -->
+      <!-- {{time_taken}}
+    </td>
+  </tr> -->
+</table>
+<mat-card-actions align="right">
+  <button mat-button type="submit" (click)="submit()">submit</button>
+  <!-- <button mat-button (click)="close()">Close</button> -->
+</mat-card-actions>

@@ -1,0 +1,78 @@
+<!-- <h1 mat-dialog-title>Hi {{required_staff.name}}</h1> -->
+
+
+<!-- 
+<div class="card" *ngIf='required_staff'>
+    <p><button style="background-color: brown">Profile</button></p>
+    <h2 >{{required_staff.employ_id}}</h2>
+    <hr>
+    <img align='center' src="assets/img1.jpg" alt="Denim Jeans" style="width:30% ;height:30%">
+    <hr>
+    <h1>{{required_staff.name}} {{required_staff.surname}}</h1>
+    <p class="price">{{required_staff.role}}</p>
+    <p>{{required_staff.phone}}</p>
+    <p>{{required_staff.email}}</p>
+    <p>{{required_staff.employ_id}}</p>
+    
+    
+  </div> -->
+  <!-- <h1 mat-dialog-title >{{required_staff.name}}'s Profile</h1>
+   -->
+   <mat-card  *ngIf='required_staff'>
+   <div style="width: 100%">
+    <mat-card  style="background-color: brown;width: 100%; color:white;text-align: center">
+    <mat-card-title>
+        {{required_staff.name}}'s  Profile
+    </mat-card-title>
+  </mat-card></div>
+  <hr>
+  <mat-dialog-content>
+      <mat-card-content style="justify-content: center">
+      <img  src="assets/img1.jpg" alt="Denim Jeans" style="width:30% ;height:30%">
+      </mat-card-content>
+      <hr>
+      <h2 style="font-style: italic">{{required_staff.name}} {{required_staff.surname}}</h2>
+      <p class="price">{{required_staff.role}}</p>
+      <p>{{required_staff.phone}}</p>
+      <p>{{required_staff.email}}</p>
+      <p>{{required_staff.employ_id}}</p>
+      
+
+  </mat-dialog-content>
+   </mat-card>
+
+
+
+<!-- <div align='center'>
+<mat-card  class="example-card" *ngIf='required_staff'>
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{required_staff.name}}</mat-card-title>
+      <mat-card-subtitle>Profile</mat-card-subtitle>
+    </mat-card-header>
+     <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+    <!-- <mat-card-content>
+      
+      <div class="d-flex justify-content-start">
+          UserName: {{required_staff.name}}
+      </div>
+      <div class="d-flex justify-content-start">
+          Employee_id: {{required_staff.employ_id}}
+      </div>
+      <div class="d-flex justify-content-start">
+          Role:         {{required_staff.role}}
+      </div>
+      <div class="d-flex justify-content-start">
+        Email:          {{required_staff.email}}
+      </div>
+      <div class="d-flex justify-content-start">
+          Role:          {{required_staff.phone}}
+      </div>
+      <div class="d-flex justify-content-start">
+          Role: {{required_staff.role}}
+      </div>
+      
+    </mat-card-content>
+    
+  </mat-card>
+  </div> --> 

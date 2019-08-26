@@ -1,0 +1,98 @@
+<mat-toolbar>
+    <span class="fill-remaining-space">
+      <button [hidden]="!menuFlag" mat-icon-button style="color: white; outline: none " (click)="snav.toggle()">
+        <mat-icon>menu outline</mat-icon>
+      </button> &nbsp;&nbsp;
+      <img class="banner" src="assets/images/logo2.jpg" alt="Image">
+    </span>
+    <span class="fill-remaining-space" style="padding-top: 3%;">
+      Logged in as {{username}} / {{role| titlecase}}
+  
+    </span>
+    <!-- <span class="fill-remaining-space"> -->
+  
+    <button style="outline: none" mat-button [matMenuTriggerFor]="menu">
+      <img class=" img-fluid rounded-0 " src="assets/Accountant.png" alt="Image" width="48px" />
+    </button>
+    <!-- </span> -->
+  </mat-toolbar>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>{{username}}</button>
+    <button mat-menu-item [matMenuTriggerFor]="profile">Profile</button>
+    <button mat-menu-item (click)="logout()">Logout</button>
+  </mat-menu>
+  <mat-menu #profile="matMenu">
+    <button mat-menu-item>{{username}}</button>
+    <button mat-menu-item>Western toad</button>
+    <button mat-menu-item>Arroyo toad</button>
+    <button mat-menu-item>Yosemite toad</button>
+  </mat-menu>
+  <div class="example-container" height="1000px">
+    <mat-sidenav-container>
+      <mat-sidenav #snav [mode]="'side'" fixedTopGap="56" class="example-sidenav-container">
+        <mat-nav-list>
+          <!-- <a mat-list-item [routerLink]="['/accountant/status']">Status</a> -->
+          <!-- <a mat-list-item [routerLink]="['/accountant/search']">Search</a> -->
+          <!-- <a mat-list-item (click)="cust2()">Registration</a> -->
+        </mat-nav-list>
+      </mat-sidenav>
+      <mat-sidenav-content>
+        <router-outlet></router-outlet>
+        <!-- <app-accountant-status *ngIf="flag0"></app-accountant-status>
+        <app-customer-registration *ngIf="flag1"></app-customer-registration> -->
+        <!-- <app-company-registration *ngIf="flag2"></app-company-registration> -->
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </div>
+
+
+
+<!-- <body>
+  <mat-toolbar>
+    <span>
+      <img class="banner" src="../../assets/images/logo2.jpg" alt="Image">
+    </span>
+  </mat-toolbar>
+  <div class="row justify-content-md-center">
+    <div class="col-xs-3 col-xs-offset-3 col-md-3 col-md-offset-3 col-lg-3 col-lg-offset-3  ">
+      <mat-card>
+        <mat-toolbar style=" border-radius: 4px;">
+          <mat-toolbar-row>
+            <h3 class="align-center">Login</h3>
+          </mat-toolbar-row>
+        </mat-toolbar>
+        <mat-card-content>
+          <form [formGroup]="valForm" class="example-form" role="form" name="loginForm" novalidate=""
+            (ngSubmit)="login($event, valForm.value)">
+            <img class="banner1" src="../../../assets/Sri_Accounting_Icons_user.png" alt="Image">&nbsp;&nbsp;
+            <mat-form-field class="example-full-width">
+              <input matInput autocomplete="off" class="form-control " id="exampleInputusername1" type="username"
+                name="username" placeholder="Enter username" formControlName="username" required="" />
+            </mat-form-field>
+            <div class="text-danger"
+              *ngIf="valForm.controls['username'].hasError('required') && (valForm.controls['username'].dirty || valForm.controls['username'].touched)">
+              This field is required</div>
+            <div class="text-danger"
+              *ngIf="valForm.controls['username'].hasError('username') && (valForm.controls['username'].dirty || valForm.controls['username'].touched)">
+              This field must be a valid username address</div>
+            <img class="banner1" src="../../assets/Password.png" alt="Image">&nbsp;&nbsp;
+            <mat-form-field class="example-full-width">
+              <input matInput autocomplete="off" class="form-control" id="exampleInputPassword1" type="password"
+                name="password" placeholder="Password" formControlName="password" [type]="hide ? 'password' : 'text'"
+                required="" />
+              &nbsp;&nbsp;
+              <mat-icon matSuffix (click)="hide = !hide"> {{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </mat-form-field>
+            <div class="text-danger"
+              *ngIf="valForm.controls['password'].hasError('required') && (valForm.controls['password'].dirty || valForm.controls['password'].touched)">
+              This field is required
+            </div>
+            <mat-card-actions>
+              <button style="width: 106px;" mat-button type="submit" name="submit">SUBMIT</button>
+            </mat-card-actions>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</body> -->

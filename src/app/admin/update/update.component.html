@@ -1,0 +1,112 @@
+<mat-form-field>
+  <label>Business Name
+    <input matInput type="text" [(ngModel)]="data['details']['business_name']">
+  </label>
+</mat-form-field>
+<div class="applyOnMainDiv">
+  <mat-card style=" padding-bottom: 1px;" class="mat-elevation-z8">
+    <table class="table table-bordered">
+      <tr class="center">
+        <td>Company Name</td>
+        <td>{{data['details']['company_name']}}</td>
+      </tr>
+      <tr class="center">
+        <td>Owner Name</td>
+        <td>{{data['details']['owner_name']}}</td>
+      </tr>
+      <tr class="center">
+        <td>Date Of Birth</td>
+        <td>{{data['details']['dob']}}</td>
+      </tr>
+      <tr class="center">
+        <td>Gender</td>
+        <td>{{data['details']['gender']}}</td>
+      </tr>
+      <tr class="center">
+        <td>Nationality</td>
+        <td>{{data['details']['nationality']}}</td>
+      </tr>
+      <tr class="center">
+        <td>ABN:</td>
+        <td>{{data['details']['abn']}}</td>
+      </tr>
+      <tr class="center">
+        <td>ACN</td>
+        <td>{{data['details']['acn']}}</td>
+      </tr>
+      <tr class="center">
+        <td>TFN</td>
+        <td>{{data['details']['tfn']}}</td>
+      </tr>
+      <!-- <tr class="center">
+        <td>Business Name</td>
+        <td [(ngModel)]="data['details']['business_name']"></td>
+      </tr> -->
+
+      <tr class="center">
+        <td>Formation Date</td>
+        <td>{{data['details']['formation_date']}}</td>
+      </tr>
+      <tr class="center">
+        <td>GST</td>
+        <td>{{data['details']['gst']}}</td>
+      </tr>
+      <tr class="center">
+        <td>Payer</td>
+        <td>{{data['details']['payer']}}</td>
+      </tr>
+      <tr class="center">
+        <td>BAS Period</td>
+        <td>{{data['details']['bas_period']}}</td>
+      </tr>
+
+      <tr class="center">
+        <td>Email</td>
+        <td>{{data['details']['email']}}</td>
+      </tr>
+      <tr class="center">
+        <td>Preferred BookKeeper</td>
+        <td *ngIf="data['details']['preferred_bookkeeper']!=''">{{data['details']['preferred_bookkeeper']}}</td>
+        <td *ngIf="data['details']['preferred_bookkeeper'] == ''">no preferred</td>
+
+      </tr>
+      <tr class="center">
+        <td>Preferred Accountant</td>
+        <td *ngIf="data['details']['preferred_accountant']!=''">{{data['details']['preferred_accountant']}}</td>
+        <td *ngIf="data['details']['preferred_accountant'] == ''">no preferred</td>
+      </tr>
+      <tr class="center">
+        <td>Phone</td>
+        <td>
+          <li type="none" *ngIf="data['details']['phone']['mobile']!=''">{{data['details']['phone']['mobile']}}
+          </li>
+          <li type="none" *ngIf="data['details']['phone']['home']!=''">{{data['details']['phone']['home']}}</li>
+          <li type="none" *ngIf="data['details']['phone']['work']!=''">{{data['details']['phone']['work']}}</li>
+        </td>
+      </tr>
+      <tr class="center">
+        <td>Business Address</td>
+        <td>
+          <li *ngIf="data['details']['business_address']['line']!=''">
+            {{data['details']['business_address']['line']}},</li>
+          <li type="none">{{data['details']['business_address']['street']}},</li>
+          <li type="none">{{data['details']['business_address']['city']}},</li>
+          <li type="none">{{data['details']['business_address']['state/territory']}},</li>
+          <li type="none">{{data['details']['business_address']['post_code']}}</li>
+        </td>
+      </tr>
+      <tr class="center">
+        <td>Registered Address</td>
+        <td>
+          <li type="none" *ngIf="data['details']['registered_address']['line']!=''">
+            {{data['details']['registered_address']['line']}},</li>
+          <li type="none">{{data['details']['registered_address']['street']}},</li>
+          <li type="none">{{data['details']['registered_address']['city']}},</li>
+          <li type="none">{{data['details']['registered_address']['state/territory']}},</li>
+          <li type="none">{{data['details']['registered_address']['post_code']}}</li>
+        </td>
+      </tr>
+    </table>
+  </mat-card>
+  <button  mat-button (click)="edit()">Edit</button>
+</div>

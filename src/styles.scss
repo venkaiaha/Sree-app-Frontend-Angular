@@ -1,0 +1,47 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,300,300bold,400bold,600,600bold,700,700bold,800,800bold&subset=latin-ext');
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import '~@angular/material/theming';
+$custom-typography: mat-typography-config(
+  $font-family: 'Open Sans',
+  $headline: mat-typography-level(32px, 48px, 700),
+  $body-1: mat-typography-level(18px, 28px, 500)
+);
+
+@include angular-material-typography($custom-typography);
+
+.mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar{
+background: #C6636D;  
+} 
+
+
+  .mat-toolbar {
+    background-color: #9E1820;
+    color: white;
+  }
+  
+  .mat-tab-body-content {
+    overflow: 0;
+}
+.mat-tab-body-content{
+  height:unset!important;
+}
+.img-fluid{
+  // background-color: black;
+  width: 46px;
+  
+}
+.img-fluid .rounded-circle {
+  border-radius: 0%!important; 
+}
+ .mat-form-field{
+  line-height: initial;
+}
+// .mat-button {
+//   text-align: center;
+//   width: 200px;
+//   height: 15px;
+//   background: #C6636D;
+//   color: white;
+//   position: relative;
+// }
